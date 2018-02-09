@@ -1,0 +1,77 @@
+<template>
+  <header class="header_">
+    <div class="header-area">
+      <strong class="logo"><a href="/">Amma Foundacion</a></strong>
+      <nav class="main-menu">
+        <div class="inner">
+          <ul class="main-nav">
+            <li v-for="(item, index) in menu" :key="index" v-bind:class="item.classes">
+              <router-link
+                :to="`${ item.url }`" exact>
+                {{ item.title }}
+              </router-link>
+              <ul v-if="item.children">
+                <li v-for="(itm, idx) in item.children">
+                  <router-link
+                    :to="{path: `${itm.url}` }">
+                    {{ itm.title }}
+                  </router-link>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </header>
+</template>
+
+<script>
+  import axios from 'axios'
+
+  export default {
+    name: 'Header',
+    data() {
+      return {
+        menu: [],
+        errors: []
+      }
+    },
+    created() {
+      axios.get('http://amma-test.bigdropinc.net/wp-json/wp-api-menus/v2/menus/18')
+        .then(response => {
+          this.menu = response.data.items
+        })
+        .catch(e => {
+          this.errors.push(e)
+        })
+    }
+  }
+</script>
+
+
+
+
+
+/http:/amma-test.bigdropinc.net/about-the-collection/
+http:/amma-test.bigdropinc.net/about-the-collection/
+http:/amma-test.bigdropinc.net/about-the-collection/
+http:/amma-test.bigdropinc.net/about-the-collection/
+http:/amma-test.bigdropinc.net/about-the-collection/
+http:/amma-test.bigdropinc.net/about-the-collection/
+http://amma-test.bigdropinc.net/exhibitions/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
