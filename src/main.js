@@ -5,12 +5,12 @@ import './css/app.css'
 import router from './router'
 import 'slick-carousel'
 import './sliderVue'
-
 // Vue.use(ElementUI)
 
 new Vue({
   el: '#app',
-  render: h => h(App),
+  template: '<App/>',
+  components: { App },
   router: router
 })
 

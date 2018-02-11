@@ -1,26 +1,19 @@
 <template>
   <div id="app">
     <Header />
-    <Slider />
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-
 import Header from './components/Header'
-import Slider from './components/Slider'
-
+// import Home from './components/Home'
 export default {
   name: 'app',
   components: {
     Header,
-    Slider
+    // Home
   },
-  data () {
-    return {
-      msg: 'Welcome to Your Vue.js App'
-    }
-  }
 }
 </script>
 
