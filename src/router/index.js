@@ -17,6 +17,7 @@ const routes = [
     component: Home
   },
   {
+<<<<<<< HEAD
     path: '/about-us/about-amma/',
     component: About,
   },
@@ -42,6 +43,33 @@ const routes = [
   },
   {
     path: '/contact-us/',
+=======
+    path: '/http://amma-test.bigdropinc.net/about-us/about-amma/',
+    component: About,
+  },
+  {
+    path: '/http://amma-test.bigdropinc.net/about-the-collection/',
+    component: Collection
+  },
+  {
+    path: '/http://amma-test.bigdropinc.net/exhibitions/',
+    component: Exhibitions
+  },
+  {
+    path: '/http://amma-test.bigdropinc.net/publications/',
+    component: Publications
+  },
+  {
+    path: '/http://amma-test.bigdropinc.net/programs/',
+    component: Programs
+  },
+  {
+    path: '/http://amma-test.bigdropinc.net/news/',
+    component: News
+  },
+  {
+    path: '/http://amma-test.bigdropinc.net/contact-us/',
+>>>>>>> c0519d923cc3fc38e27ce0da96e80f8fa5bd4554
     component: Contact
   }
 ];

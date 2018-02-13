@@ -4,6 +4,8 @@
       <h1>News</h1>
       <Posts />
     </div>
+  <div class="about-holder">
+    <h1>News</h1>
   </div>
 </template>
 
@@ -15,5 +17,4 @@
     components: {
       Posts
     }
-  }
 </script>
