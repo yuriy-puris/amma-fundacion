@@ -5,9 +5,11 @@
       <nav class="main-menu">
         <div class="inner">
           <ul class="main-nav">
-            <li v-for="(item, index) in menu" :key="index" v-bind:class="item.classes">
+            <li v-for="(item, index) in menu"
+                :key="index"
+                v-bind:class="item.classes">
               <router-link
-                :to="`${ item.url }`" exact>
+                :to="'/'+`${ item.url }`" replace>
                 {{ item.title }}
               </router-link>
               <ul v-if="item.children">
@@ -40,27 +42,22 @@
     created() {
       axios.get('http://amma-test.bigdropinc.net/wp-json/wp-api-menus/v2/menus/18')
         .then(response => {
-          this.menu = response.data.items
+          const res = response.data.items
+          res.forEach(function (item) {
+            let url = item.url.slice(32)
+            item.url = url
+//            if( item.children.length ) {
+//              console.log(item.children)
+//            }
+          })
+          this.menu = res
         })
         .catch(e => {
           this.errors.push(e)
         })
-    }
+    },
   }
 </script>
-
-
-
-
-
-/http:/amma-test.bigdropinc.net/about-the-collection/
-http:/amma-test.bigdropinc.net/about-the-collection/
-http:/amma-test.bigdropinc.net/about-the-collection/
-http:/amma-test.bigdropinc.net/about-the-collection/
-http:/amma-test.bigdropinc.net/about-the-collection/
-http:/amma-test.bigdropinc.net/about-the-collection/
-http://amma-test.bigdropinc.net/exhibitions/
-
 
 
 

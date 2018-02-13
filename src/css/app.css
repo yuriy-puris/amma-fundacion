@@ -1,3 +1,20 @@
+* {
+  box-sizing: border-box;
+}
+html {
+  min-height: 100%;
+  height: 100%;
+}
+body {
+  height: 100%;
+}
+.container {
+  max-width: 1200px;
+  margin: auto;
+}
+#app {
+  height: 100%;
+}
 .header_ {
   position: relative;
   z-index: 20;
@@ -413,9 +430,10 @@
   display: block !important;
   overflow: visible;
   width: auto;
-  padding: 23px 90px 0 243px;
+  padding: 23px 90px 0 0;
   transition: padding-top .3s;
   background: none;
+  float: right;
 }
 .main-menu .inner {
   padding: 0;
@@ -448,6 +466,11 @@
 }
 .header-area {
   position: relative;
+}
+.header-area::after {
+  content: '';
+  display: table;
+  clear: both;
 }
 .main-nav > li:hover ul {
   visibility: visible;
@@ -966,4 +989,148 @@ ul.slick-dots button:after {
 ul.slick-dots button.current:after,
 ul.slick-dots button:hover:after {
   background: #ff3a1a;
+}
+
+
+.news-wrap
+{
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.news-wrap .search-filter .search
+{
+  margin: 0;
+}
+
+.news-wrap .search-filter .btn-submit path
+{
+  fill: #ac92ed;
+}
+
+.news-wrap .info-area h2
+{
+  position: relative;
+
+  display: inline-block;
+
+  padding-top: 17px;
+
+  vertical-align: top;
+}
+
+.news-wrap .info-area h2:after
+{
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 10px;
+  height: 2px;
+
+  content: '';
+  transition: width .3s;
+
+  background-color: #ac92ed;
+}
+
+.news-wrap .info-area h2:hover:after
+{
+  width: 100%;
+}
+
+.news .date
+{
+  display: block;
+
+  margin-bottom: 10px;
+
+  text-align: center;
+
+  color: #656d78;
+}
+.other-news .news-item
+{
+ overflow: hidden;
+ padding-bottom: 20px;
+}
+.other-news {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.other-news .news-item {
+  width: 49%;
+  border: 1px solid #fff;
+  background: #f1f1f1;
+  border-radius: 10px;
+  padding: 15px 30px;
+  margin: 0 5px 20px;
+}
+.other-news h3 {
+  line-height: 24px;
+  position: relative;
+  display: inline-block;
+  padding-top: 10px;
+  vertical-align: top;
+}
+.news-item img {
+  max-width: 100%;
+}
+.news .date {
+  position: absolute;
+  top: 0;
+  left: 10px;
+  width: 40px;
+  margin: 0;
+}
+.other-news figure
+{
+  width: 210px;
+  margin: 0 auto 15px;
+}
+
+.other-news figure a
+{
+  display: block;
+}
+
+.other-news .info
+{
+  position: relative;
+
+  overflow: hidden;
+}
+
+.other-news h3
+{
+  line-height: 24px;
+
+  position: relative;
+
+  display: inline-block;
+
+  padding-top: 10px;
+
+  vertical-align: top;
+}
+
+.other-news h3:after
+{
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 10px;
+  height: 2px;
+
+  content: '';
+  transition: width .3s;
+
+  background-color: #ac92ed;
+}
+
+.other-news h3:hover:after
+{
+  width: 100%;
 }
