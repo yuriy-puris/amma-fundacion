@@ -1,9 +1,6 @@
-<<<<<<< HEAD
 * {
   box-sizing: border-box;
 }
-=======
->>>>>>> c0519d923cc3fc38e27ce0da96e80f8fa5bd4554
 html {
   min-height: 100%;
   height: 100%;
@@ -11,13 +8,10 @@ html {
 body {
   height: 100%;
 }
-<<<<<<< HEAD
 .container {
   max-width: 1200px;
   margin: auto;
 }
-=======
->>>>>>> c0519d923cc3fc38e27ce0da96e80f8fa5bd4554
 #app {
   height: 100%;
 }
@@ -1139,4 +1133,69 @@ ul.slick-dots button:hover:after {
 .other-news h3:hover:after
 {
   width: 100%;
+}
+.pagination-template {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 0;
+  width: 100%;
+}
+.pagination-template button {
+  font-size: 20px;
+  background: #fff;
+  border: 1px solid #333;
+  border-radius: 5px;
+  min-width: 100px;
+  color: #333;
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  padding: 5px 0;
+  outline: none;
+  cursor: pointer;
+}
+button[disabled] {
+  opacity: .3;
+}
+.pagination {
+  margin: 0;
+}
+.pagination a {
+  color: #333;
+  display: inline-block;
+  padding: 5px 10px;
+  border: 1px solid #333;
+  border-radius: 5px;
+  text-decoration: none;
+}
+.pagination a.current {
+  background: #333;
+  color: #fff;
+}
+.btn-letter {
+  color: #333;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  display: inline-block;
+  padding: 6px 12px;
+  margin: 0 3px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.42857143;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background-image: none;
+  border-radius: 4px;
+}
+.btn-letter:hover {
+  background: #eee;
 }

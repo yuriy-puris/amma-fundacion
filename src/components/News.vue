@@ -4,17 +4,23 @@
       <h1>News</h1>
       <Posts />
     </div>
-  <div class="about-holder">
-    <h1>News</h1>
   </div>
 </template>
 
 <script>
   import Posts from '../components/Posts'
+  import Pagination from '../components/Pagination'
 
   export default {
     name: 'News',
+    data() {
+      return {
+        currentPage: 1
+      }
+    },
     components: {
-      Posts
-    }
+      Posts,
+      Pagination
+    },
+  }
 </script>

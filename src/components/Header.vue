@@ -9,13 +9,13 @@
                 :key="index"
                 v-bind:class="item.classes">
               <router-link
-                :to="'/'+`${ item.url }`" replace>
+                :to="'/'+`${ item.url }`">
                 {{ item.title }}
               </router-link>
               <ul v-if="item.children">
                 <li v-for="(itm, idx) in item.children">
                   <router-link
-                    :to="{path: `${itm.url}` }">
+                    :to="'/'+`${itm.url.slice(32)}`">
                     {{ itm.title }}
                   </router-link>
                 </li>
@@ -46,9 +46,6 @@
           res.forEach(function (item) {
             let url = item.url.slice(32)
             item.url = url
-//            if( item.children.length ) {
-//              console.log(item.children)
-//            }
           })
           this.menu = res
         })

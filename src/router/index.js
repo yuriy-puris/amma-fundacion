@@ -8,6 +8,7 @@ import Publications from '../components/Publications'
 import Programs from '../components/Programs'
 import News from '../components/News'
 import Contact from '../components/Contact'
+import Artists from '../components/Artists'
 
 Vue.use(Router)
 
@@ -17,13 +18,18 @@ const routes = [
     component: Home
   },
   {
-<<<<<<< HEAD
     path: '/about-us/about-amma/',
     component: About,
   },
   {
-    path: '/about-the-collection/',
-    component: Collection
+    path: '/about-the-collection',
+    component: Collection,
+    children: [
+      {
+        path: '/artists',
+        component: Artists
+      },
+    ]
   },
   {
     path: '/exhibitions/',
@@ -43,35 +49,8 @@ const routes = [
   },
   {
     path: '/contact-us/',
-=======
-    path: '/http://amma-test.bigdropinc.net/about-us/about-amma/',
-    component: About,
-  },
-  {
-    path: '/http://amma-test.bigdropinc.net/about-the-collection/',
-    component: Collection
-  },
-  {
-    path: '/http://amma-test.bigdropinc.net/exhibitions/',
-    component: Exhibitions
-  },
-  {
-    path: '/http://amma-test.bigdropinc.net/publications/',
-    component: Publications
-  },
-  {
-    path: '/http://amma-test.bigdropinc.net/programs/',
-    component: Programs
-  },
-  {
-    path: '/http://amma-test.bigdropinc.net/news/',
-    component: News
-  },
-  {
-    path: '/http://amma-test.bigdropinc.net/contact-us/',
->>>>>>> c0519d923cc3fc38e27ce0da96e80f8fa5bd4554
     component: Contact
-  }
+  },
 ];
 
 export default new Router({
