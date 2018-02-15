@@ -9,13 +9,26 @@
         {{letter}}
       </button>
     </div>
-    <ul>
-      <li
-        v-for="name in filterList"
+    <div class="filter-holder">
+      <div
+        class="item-letter"
+        v-for="letter in letters"
       >
-        {{ name.acf.artist_first_name }}
-      </li>
-    </ul>
+        <strong
+          class="title-letter"
+        >
+          {{ letter }}
+        </strong>
+        <ul>
+          <li
+            v-for="name in artists"
+            v-if="name.slug.toLowerCase().charAt(0) === letter.toLowerCase()"
+          >
+            {{ name.slug }}
+          </li>
+        </ul>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -26,7 +39,6 @@
     name: 'Artists',
     data() {
       return {
-        artist_first_name: '',
         artists: [],
         errors: [],
         letters: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'],
@@ -37,25 +49,23 @@
       axios.get('http://amma-test.bigdropinc.net/wp-json/wp/v2/artists')
         .then(response => {
           this.artists = response.data
-          this.startFilter = true
-          console.log(this.artists)
+          this.artists.sort(function(a, b) {
+            if( a.slug > b.slug ) {
+              return 1
+            }
+            if (a.slug < b.slug) {
+              return -1;
+            }
+          })
         })
         .catch(e => {
           this.errors.push(e)
         })
     },
     computed: {
-      filterList() {
-        if(this.startFilter === true) {
-          const name = this.artist_first_name
-          return this.artists.filter(elem => {
-            if(name === '') {
-              return true
-            }
-            else {
-              return elem.acf.artist_first_name.indexOf(name) > -1
-            }
-          })
+      sortList() {
+        if( this.startFilter === true ) {
+          this.artists.sort()
         }
       }
     }

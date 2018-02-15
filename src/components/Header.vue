@@ -15,7 +15,7 @@
               <ul v-if="item.children">
                 <li v-for="(itm, idx) in item.children">
                   <router-link
-                    :to="'/'+`${itm.url.slice(32)}`">
+                    :to="'/'+`${ itm.url.slice(32) }`">
                     {{ itm.title }}
                   </router-link>
                 </li>

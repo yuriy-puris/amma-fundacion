@@ -24,16 +24,14 @@ const routes = [
   {
     path: '/about-the-collection',
     component: Collection,
-    children: [
-      {
-        path: '/artists',
-        component: Artists
-      },
-    ]
   },
   {
     path: '/exhibitions/',
     component: Exhibitions
+  },
+  {
+    path: '/artists',
+    component: Artists
   },
   {
     path: '/publications/',

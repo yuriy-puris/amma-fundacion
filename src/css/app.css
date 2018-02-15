@@ -1199,3 +1199,30 @@ button[disabled] {
 .btn-letter:hover {
   background: #eee;
 }
+.filter {
+  margin: 0 0 50px;
+}
+.artists-holder {
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 15px;
+}
+.filter-holder {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+.filter-holder li {
+  display: block;
+  margin: 10px 0;
+}
+.title-letter {
+  font-size: 30px;
+}
+.item-letter {
+  background: #eee;
+  border-radius: 10px;
+  padding: 10px 15px;
+  width: 25%;
+  margin: 20px 20px;
+}

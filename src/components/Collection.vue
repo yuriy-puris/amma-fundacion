@@ -6,7 +6,12 @@
 </template>
 
 <script>
+  import Artists from '../components/Artists'
+
   export default {
-    name: 'Collection'
+    name: 'Collection',
+    components: {
+      Artists
+    }
   }
 </script>
