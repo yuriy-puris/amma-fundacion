@@ -6,13 +6,12 @@
 </template>
 
 <script>
+import EventBus from './components/eventBus'
 import Header from './components/Header'
-// import Home from './components/Home'
 export default {
   name: 'app',
   components: {
     Header,
-    // Home
   },
 }
 </script>

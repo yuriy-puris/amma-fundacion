@@ -9,7 +9,6 @@
 
 <script>
   import Posts from '../components/Posts'
-  import Pagination from '../components/Pagination'
 
   export default {
     name: 'News',
@@ -20,7 +19,6 @@
     },
     components: {
       Posts,
-      Pagination
     },
   }
 </script>

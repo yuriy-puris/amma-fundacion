@@ -9,6 +9,7 @@ import Programs from '../components/Programs'
 import News from '../components/News'
 import Contact from '../components/Contact'
 import Artists from '../components/Artists'
+import LetterPage from '../components/LetterPage'
 
 Vue.use(Router)
 
@@ -31,7 +32,11 @@ const routes = [
   },
   {
     path: '/artists',
-    component: Artists
+    component: Artists,
+  },
+  {
+    path: '/artists/:id',
+    component: LetterPage,
   },
   {
     path: '/publications/',

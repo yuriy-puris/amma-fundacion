@@ -2,12 +2,14 @@
   <div class="artists-holder">
     <h2>Artists</h2>
     <div class="filter">
-      <button
+      <router-link
         class="btn-letter"
         v-for="letter in letters"
+        v-on:click="triggerLetter(letter)"
+        :to="{ path: letter.toLowerCase() }"
       >
         {{letter}}
-      </button>
+      </router-link>
     </div>
     <div class="filter-holder">
       <div
@@ -29,16 +31,24 @@
         </ul>
       </div>
     </div>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
   import axios from 'axios'
+  import { EventBus } from '../components/eventBus';
+  import LetterPage from '../components/LetterPage'
+
 
   export default {
     name: 'Artists',
+    components: {
+      LetterPage,
+    },
     data() {
       return {
+        letter: '',
         artists: [],
         errors: [],
         letters: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'],
@@ -62,11 +72,10 @@
           this.errors.push(e)
         })
     },
-    computed: {
-      sortList() {
-        if( this.startFilter === true ) {
-          this.artists.sort()
-        }
+    methods: {
+      triggerLetter(ltr) {
+        console.log(1)
+        this.$emit('save-letter', ltr)
       }
     }
   }
