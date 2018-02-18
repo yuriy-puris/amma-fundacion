@@ -6,13 +6,16 @@
 </template>
 
 <script>
-import EventBus from './components/eventBus'
 import Header from './components/Header'
+
 export default {
   name: 'app',
   components: {
     Header,
   },
+  mounted: function () {
+    this.$store.dispatch('LOAD_PAGE_LIST')
+  }
 }
 </script>
 

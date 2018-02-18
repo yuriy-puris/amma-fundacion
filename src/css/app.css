@@ -1186,21 +1186,21 @@ button[disabled] {
   text-align: center;
   white-space: nowrap;
   vertical-align: middle;
-  -ms-touch-action: manipulation;
   touch-action: manipulation;
   cursor: pointer;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
   background-image: none;
   border-radius: 4px;
+  text-decoration: none;
 }
 .btn-letter:hover {
   background: #eee;
 }
 .filter {
   margin: 0 0 50px;
+}
+.filter a.router-link-active {
+  color: #f6bb43;
 }
 .artists-holder {
   max-width: 1200px;
@@ -1225,4 +1225,47 @@ button[disabled] {
   padding: 10px 15px;
   width: 25%;
   margin: 20px 20px;
+}
+.people-list ul {
+  font-size: 0;
+  line-height: 0;
+  text-align: left;
+}
+.people-list ul li {
+  display: inline-block;
+  width: 25%;
+  vertical-align: top;
+  text-align: left;
+  font-size: 14px;
+  line-height: 32px;
+  padding: 0;
+  margin: 0 0 20px;
+}
+.people-list h3 {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 10px;
+  padding-top: 8px;
+  vertical-align: top;
+  text-transform: capitalize;
+}
+h3 {
+  font-size: 26px;
+  margin-bottom: 17px;
+}
+.people-list h3:after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 10px;
+  height: 2px;
+  content: '';
+  transition: width .3s;
+  background-color: #ff3a1a;
+}
+.collection .people-list h3:after {
+  background: #f6bb43;
+}
+.people-list h3:hover:after {
+  width: 100%;
 }

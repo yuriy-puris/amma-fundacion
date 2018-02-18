@@ -1,38 +1,46 @@
 <template>
-  <div class="letter-holder">
-    <ul>
-      <li
-        v-on:send-letter="saveLetter(ltr)"
-        v-for="name in artists"
-        v-if="name.slug.toLowerCase().charAt(0) === letter.toLowerCase()"
-      >
-        letter
-      </li>
-    </ul>
+  <div class="container">
+    <FilterArtists />
+    <div class="people-list">
+      <ul>
+        <li
+          v-for="name in artists"
+          v-if="name.slug.toLowerCase().charAt(0) === id.toLowerCase()"
+        >
+          <h3>
+            {{ name.slug }}
+          </h3>
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 
 <script>
-  import { EventBus } from '../components/eventBus.js';
+  import axios from 'axios'
+  import FilterArtists from '../components/FilterArtists'
+
   export default {
     name: 'LetterPage',
-    props: ['artists'],
+    props: ['id'],
+    components: {
+      FilterArtists
+    },
     data() {
       return {
+        artists: [],
+        error: [],
         letters: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'],
       }
     },
-    methods: {
-      saveLetter() {
-        console.log(this.letter)
-      }
-    },
     created() {
-      EventBus.$on('save-letter', (ltr) => {
-        this.letter = ltr
-        console.log(ltr)
-      })
-      console.log(this.letter)
-    }
+      axios.get('http://amma-test.bigdropinc.net/wp-json/wp/v2/artists')
+        .then(response => {
+          this.artists = response.data
+        })
+        .catch(e => {
+            this.errors.push(e)
+        })
+    },
   }
 </script>

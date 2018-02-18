@@ -37,6 +37,7 @@ const routes = [
   {
     path: '/artists/:id',
     component: LetterPage,
+    props: true
   },
   {
     path: '/publications/',
