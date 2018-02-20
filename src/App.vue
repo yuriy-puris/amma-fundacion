@@ -14,7 +14,9 @@ export default {
     Header,
   },
   mounted: function () {
+    this.$store.dispatch('LOAD_MENU_LIST')
     this.$store.dispatch('LOAD_PAGE_LIST')
+    this.$store.dispatch('LOAD_EXHIBITIONS')
   }
 }
 </script>

@@ -62,6 +62,9 @@
           this.errors.push(e)
         })
     },
+    mounted() {
+      console.log({router: this.$router.hash})
+    },
     methods: {
       triggerLetter(ltr) {
         console.log(1)

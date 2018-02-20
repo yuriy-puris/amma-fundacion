@@ -9,13 +9,19 @@
                 :key="index"
                 v-bind:class="item.classes">
               <router-link
-                :to="'/'+`${ item.url }`">
+                :to="{
+                  name: `${ item.object_slug === null ? item.object : item.object_slug  }`,
+                  params: { name: `${ item.object_slug === null ? item.object : item.object_slug }` }
+                }">
                 {{ item.title }}
               </router-link>
               <ul v-if="item.children">
                 <li v-for="(itm, idx) in item.children">
                   <router-link
-                    :to="'/'+`${ itm.url.slice(32) }`">
+                    :to="{
+                      name: `${ itm.object_slug === null ? itm.object : itm.object_slug  }`,
+                      params: { name: `${ itm.object_slug === null ? itm.object : itm.object_slug }` }
+                    }">
                     {{ itm.title }}
                   </router-link>
                 </li>

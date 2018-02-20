@@ -10,6 +10,10 @@ import News from '../components/News'
 import Contact from '../components/Contact'
 import Artists from '../components/Artists'
 import LetterPage from '../components/LetterPage'
+import CurrentExhibitions from '../components/CurrentExhibitions'
+import UpcomingExhibitions from '../components/UpcomingExhibitions'
+import PastExhibitions from '../components/PastExhibitions'
+
 
 Vue.use(Router)
 
@@ -18,26 +22,63 @@ const routes = [
     path: '/',
     component: Home
   },
+  // {
+  //   path: '/artists/:name',
+  //   name: 'name',
+  //   component: LetterPage,
+  //   props: true
+  // },
   {
     path: '/about-us/about-amma/',
+    name: 'about-amma',
     component: About,
+    props: true
   },
   {
-    path: '/about-the-collection',
+    path: '/about-the-collection/',
+    name: 'about-the-collection',
     component: Collection,
+    props: true
   },
   {
-    path: '/exhibitions/',
-    component: Exhibitions
+    path: '/exhibitions',
+    name: 'exhibitions',
+    component: Exhibitions,
+    props: true,
+    children: [
+      {
+        path: 'exhibitions',
+        name: 'exhibitions',
+        component: CurrentExhibitions,
+        props: true
+      },
+      {
+        path: 'upcoming-exhibitions',
+        name: 'upcoming-exhibitions',
+        component: UpcomingExhibitions,
+        props: true
+      },
+      {
+        path: 'past-exhibitions',
+        name: 'past-exhibitions',
+        component: PastExhibitions,
+        props: true
+      },
+    ]
   },
   {
     path: '/artists',
+    name:'artists',
     component: Artists,
-  },
-  {
-    path: '/artists/:id',
-    component: LetterPage,
-    props: true
+    props: true,
+    children: [
+      {
+        path: '/:id',
+        name: 'id',
+        component: LetterPage,
+        props: true
+      },
+    ]
   },
   {
     path: '/publications/',
@@ -45,14 +86,18 @@ const routes = [
   },
   {
     path: '/programs/',
-    component: Programs
+    name: 'programs',
+    component: Programs,
+    props: true
   },
   {
     path: '/news/',
+    name: 'news',
     component: News
   },
   {
     path: '/contact-us/',
+    name: 'contact-us',
     component: Contact
   },
 ];

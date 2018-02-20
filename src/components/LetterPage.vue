@@ -22,7 +22,12 @@
 
   export default {
     name: 'LetterPage',
-    props: ['id'],
+    props: {
+      name: {
+        type: String,
+        required: true
+      }
+    },
     components: {
       FilterArtists
     },
@@ -34,6 +39,7 @@
       }
     },
     created() {
+      console.log(this.name)
       axios.get('http://amma-test.bigdropinc.net/wp-json/wp/v2/artists')
         .then(response => {
           this.artists = response.data

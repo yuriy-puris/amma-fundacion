@@ -2,8 +2,11 @@
   <div class="filter">
     <router-link
       class="btn-letter"
-      v-for="letter in letters"
-      :to="{ path: letter.toLowerCase() }"
+      v-for="(letter, index) in letters"
+      :to="{
+        name: `${ letter.toLowerCase() }`,
+        params: { name: `${ letter.toLowerCase() }` }
+      }"
     >
       {{letter}}
     </router-link>
