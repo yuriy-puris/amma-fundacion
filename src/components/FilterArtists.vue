@@ -3,10 +3,7 @@
     <router-link
       class="btn-letter"
       v-for="(letter, index) in letters"
-      :to="{
-        name: `${ letter.toLowerCase() }`,
-        params: { name: `${ letter.toLowerCase() }` }
-      }"
+      :to="{ path: '/artists/' + `${ letter.toLowerCase() }`}"
     >
       {{letter}}
     </router-link>

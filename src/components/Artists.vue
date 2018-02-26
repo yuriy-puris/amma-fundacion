@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="artists-holder">
-      <h2>Artists</h2>
+      <h1>Artists</h1>
       <FilterArtists />
       <div class="filter-holder">
         <div
@@ -34,7 +34,7 @@
   export default {
     name: 'Artists',
     components: {
-      FilterArtists,
+      FilterArtists
     },
     data() {
       return {
@@ -42,34 +42,16 @@
         artists: [],
         errors: [],
         letters: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'],
-        startFilter: false
       }
     },
     created() {
       axios.get('http://amma-test.bigdropinc.net/wp-json/wp/v2/artists')
         .then(response => {
           this.artists = response.data
-          this.artists.sort(function(a, b) {
-            if( a.slug > b.slug ) {
-              return 1
-            }
-            if (a.slug < b.slug) {
-              return -1;
-            }
-          })
         })
         .catch(e => {
           this.errors.push(e)
         })
     },
-    mounted() {
-      console.log({router: this.$router.hash})
-    },
-    methods: {
-      triggerLetter(ltr) {
-        console.log(1)
-        this.$emit('save-letter', ltr)
-      }
-    }
   }
 </script>

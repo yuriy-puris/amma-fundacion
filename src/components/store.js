@@ -6,7 +6,8 @@ const store = new Vuex.Store ({
   state: {
     menu_list: null,
     pages: null,
-    page_exhibitions: null
+    page_exhibitions: null,
+    filter_settings: null,
   },
   actions: {
     LOAD_MENU_LIST: function({commit}) {
@@ -38,6 +39,16 @@ const store = new Vuex.Store ({
             console.log(err)
           }
         )
+    },
+    LOAD_FILTER_SETTINGS: function({commit}) {
+      axios.get('http://amma-test.bigdropinc.net/wp-json/wp/v2/artworks-settings')
+        .then((response) => {
+          commit('SET_FILTER_SETTINGS', { filter_settings: response.data })
+        },
+        (err) => {
+          console.log(err)
+        }
+      )
     }
   },
   mutations: {
@@ -49,6 +60,9 @@ const store = new Vuex.Store ({
     },
     SET_EXHIBITIONS: (state, { page_exhibitions }) => {
       state.page_exhibitions = page_exhibitions
+    },
+    SET_FILTER_SETTINGS: (state, { filter_settings }) => {
+      state.filter_settings = filter_settings
     },
   },
 })

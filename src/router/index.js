@@ -13,7 +13,7 @@ import LetterPage from '../components/LetterPage'
 import CurrentExhibitions from '../components/CurrentExhibitions'
 import UpcomingExhibitions from '../components/UpcomingExhibitions'
 import PastExhibitions from '../components/PastExhibitions'
-
+import Artworks from '../components/Artworks'
 
 Vue.use(Router)
 
@@ -38,6 +38,12 @@ const routes = [
     path: '/about-the-collection/',
     name: 'about-the-collection',
     component: Collection,
+    props: true,
+  },
+  {
+    path: '/about-the-collection/artworks',
+    name: 'artworks',
+    component: Artworks,
     props: true
   },
   {
@@ -47,19 +53,19 @@ const routes = [
     props: true,
     children: [
       {
-        path: 'exhibitions',
+        path: ':exhibitions',
         name: 'exhibitions',
         component: CurrentExhibitions,
         props: true
       },
       {
-        path: 'upcoming-exhibitions',
+        path: ':upcoming-exhibitions',
         name: 'upcoming-exhibitions',
         component: UpcomingExhibitions,
         props: true
       },
       {
-        path: 'past-exhibitions',
+        path: ':past-exhibitions',
         name: 'past-exhibitions',
         component: PastExhibitions,
         props: true
@@ -71,14 +77,11 @@ const routes = [
     name:'artists',
     component: Artists,
     props: true,
-    children: [
-      {
-        path: '/:id',
-        name: 'id',
-        component: LetterPage,
-        props: true
-      },
-    ]
+  },
+  {
+    path: '/artists/:id',
+    component: LetterPage,
+    props: true
   },
   {
     path: '/publications/',

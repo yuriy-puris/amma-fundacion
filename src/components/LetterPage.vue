@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    <h1>Artists</h1>
     <FilterArtists />
     <div class="people-list">
       <ul>
@@ -22,12 +23,7 @@
 
   export default {
     name: 'LetterPage',
-    props: {
-      name: {
-        type: String,
-        required: true
-      }
-    },
+    props: ['id'],
     components: {
       FilterArtists
     },
