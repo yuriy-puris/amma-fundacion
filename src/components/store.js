@@ -8,6 +8,7 @@ const store = new Vuex.Store ({
     pages: null,
     page_exhibitions: null,
     filter_settings: null,
+    artworks: null
   },
   actions: {
     LOAD_MENU_LIST: function({commit}) {
@@ -49,7 +50,17 @@ const store = new Vuex.Store ({
           console.log(err)
         }
       )
-    }
+    },
+    LOAD_ARTWORKS: function({commit}) {
+      axios.get('http://amma-test.bigdropinc.net/wp-json/wp/v2/artworks?_embed')
+        .then((response) => {
+            commit('SET_ARTWORKS', { artworks: response.data })
+          },
+          (err) => {
+            console.log(err)
+          }
+        )
+    },
   },
   mutations: {
     SET_MENU_LIST: (state, { menu_list }) => {
@@ -63,6 +74,9 @@ const store = new Vuex.Store ({
     },
     SET_FILTER_SETTINGS: (state, { filter_settings }) => {
       state.filter_settings = filter_settings
+    },
+    SET_ARTWORKS: (state, { artworks }) => {
+      state.artworks = artworks
     },
   },
 })

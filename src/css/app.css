@@ -692,9 +692,6 @@ section h2
 .collection-gallery .item
 {
   font: 16px/19px 'ovoregular', serif;
-
-  width: 160px;
-
   color: #1f2226;
 }
 
@@ -711,10 +708,7 @@ section h2
 .collection-gallery figure a
 {
   display: block;
-
   width: 100%;
-  height: 205px;
-
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -1509,11 +1503,39 @@ input:checked + span {
   -moz-border-top-colors: none;
 }
 
+.collection-wrap .collection-gallery {
+  display: flex;
+  margin: 0 -10px;
+  flex-wrap: wrap;
+}
 
+.collection-wrap .collection-gallery li {
+  width: 25%;
+  margin: 0 0 50px;
+}
 
-
-
-
-
-
-
+.collection-wrap .collection-gallery figure {
+  margin-bottom: 14px;
+}
+.collection-wrap .collection-gallery figure a {
+  display: block;
+}
+.collection-wrap .collection-gallery figure img {
+  width: 100%;
+}
+.collection-wrap .collection-gallery h3 {
+  font-size: 14px;
+  line-height: 16px;
+  margin-bottom: 13px;
+  padding-top: 13px;
+}
+.collection-wrap .collection-gallery h4 {
+  font-size: 18px;
+  line-height: 20px;
+}
+.collection-wrap .collection-gallery .date,
+.collection-wrap .collection-gallery .category {
+  font-size: 14px;
+  line-height: 16px;
+  display: block;
+}

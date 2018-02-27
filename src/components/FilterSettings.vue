@@ -94,25 +94,16 @@
       <div class="sorting">
         <label>Per page</label>
         <div class="select-wrap">
-          <select>
+          <select
+            v-on:change="changeRoute"
+          >
             <option
               v-for="item in settings.per_page"
               v-bind:value="item"
             >
-              <router-link
-                :to="{
-                  query: { types: `${ item }` }
-                }"
-              >
-                {{ item }}
-              </router-link>
+              {{ item }}
             </option>
           </select>
-          <v-select
-            v-model="selected"
-            :options=settings.per_page
-          >
-          </v-select>
         </div>
       </div>
     </div>
@@ -120,6 +111,8 @@
 </template>
 
 <script>
+  const queryString = require('query-string');
+  import router from '../router'
   import vSelect from 'vue-select'
   import { mapState } from 'vuex'
   export default {
@@ -129,15 +122,22 @@
     },
     data() {
       return {
-        settings: null
+        settings: null,
+        query_string: ''
       }
     },
     computed: ([
       'filter_settings'
     ]),
+    methods: {
+      changeRoute(event) {
+        const path = event.target.value
+        router.push({ query: { per_page: `${path}` } })
+        this.query_string = queryString.stringify(this.$route.query);
+      }
+    },
     created() {
       this.settings = this.$store.state.filter_settings
-
     },
   }
 </script>

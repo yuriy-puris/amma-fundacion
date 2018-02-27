@@ -9,6 +9,8 @@ import 'query-string'
 import 'slick-carousel'
 import './sliderVue'
 
+
+
 Vue.use(Vuex)
 
 new Vue({
