@@ -5,57 +5,18 @@
     <div class="filter-checkboxes">
       <label>Filter By Type</label>
       <ul class="artworks-types">
-        <li>
-          <span class="jcf-checkbox jcf-checked">
-            <input type="checkbox" value="painting" style="position: absolute; height: 100%; width: 100%; opacity: 0; margin: 0px;">
-            <span></span>
-          </span>
-          <router-link
-            :to="{
-              query: { types: `${ settings.types.painting.toLowerCase() }` }
-            }"
-          >
-            {{ settings.types.painting }}
-          </router-link>
-        </li>
-        <li>
-          <span class="jcf-checkbox jcf-checked">
-            <input type="checkbox" value="painting" style="position: absolute; height: 100%; width: 100%; opacity: 0; margin: 0px;">
-            <span></span>
-          </span>
-          <router-link
-            :to="{
-              query: { types: `${ settings.types.sculpture.toLowerCase() }` }
-            }"
-          >
-            {{ settings.types.sculpture }}
-          </router-link>
-        </li>
-        <li>
-          <span class="jcf-checkbox jcf-checked">
-            <input type="checkbox" value="painting" style="position: absolute; height: 100%; width: 100%; opacity: 0; margin: 0px;">
-            <span></span>
-          </span>
-          <router-link
-            :to="{
-              query: { types: `${ settings.types.other.toLowerCase() }` }
-            }"
-          >
-            {{ settings.types.other }}
-          </router-link>
-        </li>
-        <li>
-          <span class="jcf-checkbox jcf-checked">
-            <input type="checkbox" value="painting" style="position: absolute; height: 100%; width: 100%; opacity: 0; margin: 0px;">
-            <span></span>
-          </span>
-          <router-link
-            :to="{
-              query: { types: `${ settings.types.photography.toLowerCase() }` }
-            }"
-          >
-            {{ settings.types.photography }}
-          </router-link>
+        <li
+          v-for="(value, key, index) in filter_settings.types"
+          :key="index"
+        >
+          <label>
+            <input
+              type="checkbox"
+              v-model="filter_types"
+              v-bind:value="value"
+            >
+            {{ value }}
+          </label>
         </li>
       </ul>
       <label>Show Only</label>
@@ -64,48 +25,49 @@
       </ul>
     </div>
 
-    <div class="filter-selects">
-      <label>Date</label>
-      <div class="select-wrap">
-        <select name="artwork_year">
-          <option
-            v-for="item in settings.artwork_year"
-            v-bind:value="item"
-          >
-            {{item}}
-          </option>
-        </select>
-      </div>
-      <label>Sort By</label>
-      <div class="select-wrap">
-        <select name="orderby">
-          <option
-            v-for="item in settings.orderby"
-            v-bind:value="item"
-          >
-            {{item}}
-          </option>
-        </select>
-      </div>
-    </div>
-    </div>
-    <div class="toolbar-sorting">
-      <div class="items-showing">Showing: <span>1</span> Works</div>
-      <div class="sorting">
-        <label>Per page</label>
-        <div class="select-wrap">
-          <select
-            v-on:change="changeRoute"
-          >
-            <option
-              v-for="item in settings.per_page"
-              v-bind:value="item"
-            >
-              {{ item }}
-            </option>
-          </select>
-        </div>
-      </div>
+    <!--<div class="filter-selects">-->
+      <!--<label>Date</label>-->
+      <!--<div class="select-wrap">-->
+        <!--<select name="artwork_year">-->
+          <!--<option-->
+            <!--v-for="item in settings.artwork_year"-->
+            <!--v-bind:value="item"-->
+          <!--&gt;-->
+            <!--{{item}}-->
+          <!--</option>-->
+        <!--</select>-->
+      <!--</div>-->
+      <!--<label>Sort By</label>-->
+      <!--<div class="select-wrap">-->
+        <!--<select name="orderby">-->
+          <!--<option-->
+            <!--v-for="item in settings.orderby"-->
+            <!--v-bind:value="item"-->
+          <!--&gt;-->
+            <!--{{item}}-->
+          <!--</option>-->
+        <!--</select>-->
+      <!--</div>-->
+    <!--</div>-->
+
+    <!--<div class="toolbar-sorting">-->
+      <!--<div class="items-showing">Showing: <span>1</span> Works</div>-->
+      <!--<div class="sorting">-->
+        <!--<label>Per page</label>-->
+        <!--<div class="select-wrap">-->
+          <!--<select-->
+            <!--v-on:change="changeRoute"-->
+          <!--&gt;-->
+            <!--<option-->
+              <!--v-for="item in settings.per_page"-->
+              <!--v-bind:value="item"-->
+            <!--&gt;-->
+              <!--{{ item }}-->
+            <!--</option>-->
+          <!--</select>-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
     </div>
   </div>
 </template>
@@ -122,22 +84,36 @@
     },
     data() {
       return {
+        filter_types: [],
         settings: null,
         query_string: ''
       }
     },
-    computed: ([
-      'filter_settings'
-    ]),
+    watch: {
+      filter_types(info) {
+        let prevQuery = this.$route.query
+        let nextQuery = {...prevQuery, types: info.length ? info.join('%2C') : undefined }
+        this.$router.push({query: nextQuery})
+      }
+    },
+    computed: {
+      ...mapState([
+        'filter_settings'
+      ])
+    },
     methods: {
+      getSettings() {
+        this.$store.dispatch('LOAD_FILTER_SETTINGS')
+      },
       changeRoute(event) {
         const path = event.target.value
         router.push({ query: { per_page: `${path}` } })
         this.query_string = queryString.stringify(this.$route.query);
+        this.$store.dispatch('LOAD_ARTWORKS', { query: '&'+this.query_string })
       }
     },
     created() {
-      this.settings = this.$store.state.filter_settings
+      this.getSettings()
     },
   }
 </script>

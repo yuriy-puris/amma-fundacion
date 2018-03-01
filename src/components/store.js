@@ -51,8 +51,28 @@ const store = new Vuex.Store ({
         }
       )
     },
-    LOAD_ARTWORKS: function({commit}) {
-      axios.get('http://amma-test.bigdropinc.net/wp-json/wp/v2/artworks?_embed')
+    LOAD_ARTWORKS: function({commit}, query) {
+      let queryStr = ''
+      if( typeof query !== 'undefined'  ) {
+        for( let key in query ) {
+          if( key === 'types' ) {
+            queryStr += `&filter[${key}]=${query[key]}`
+          } else if ( key === 'per_page' ) {
+            queryStr += `&${key}=${query[key]}`
+          } else if ( key === 'new-acquisition' ) {
+            queryStr += `&${key}=${query[key]}`
+          } else if ( key === 'artwork_year' ) {
+            queryStr += `&${key}=${query[key]}`
+          } else if ( key === 'orderby' ) {
+            queryStr += `&${key}=${query[key]}`
+          } else {
+            queryStr += `&filter[${key}]=${query[key]}`
+          }
+        }
+      } else {
+        console.log('query error')
+      }
+      axios.get(`http://amma-test.bigdropinc.net/wp-json/wp/v2/artworks?_embed${queryStr}`)
         .then((response) => {
             commit('SET_ARTWORKS', { artworks: response.data })
           },
