@@ -4,6 +4,7 @@ import axios from 'axios'
 Vue.use(Vuex)
 const store = new Vuex.Store ({
   state: {
+    home_page: null,
     menu_list: null,
     pages: null,
     page_exhibitions: null,
@@ -70,7 +71,7 @@ const store = new Vuex.Store ({
           }
         }
       } else {
-        console.log('query error')
+        queryStr += ''
       }
       axios.get(`http://amma-test.bigdropinc.net/wp-json/wp/v2/artworks?_embed${queryStr}`)
         .then((response) => {
@@ -80,6 +81,20 @@ const store = new Vuex.Store ({
             console.log(err)
           }
         )
+    },
+    LOAD_HOME_PAGE: function({commit}) {
+      axios.get('http://amma-test.bigdropinc.net/wp-json/wp/v2/pages/394')
+        .then((response) => {
+          let home_page = {
+            home_collection: response.data.acf.home_collection_artworks,
+            home_slider_artworks: response.data.acf.home_slider_artworks,
+            home_exhibitions: response.data.acf.home_exhibitions,
+            home_artists: response.data.acf.home_artists
+          }
+          commit('SET_HOME_PAGE', { home_page })
+          }).catch(e => {
+            console.log(e)
+        })
     },
   },
   mutations: {
@@ -97,6 +112,9 @@ const store = new Vuex.Store ({
     },
     SET_ARTWORKS: (state, { artworks }) => {
       state.artworks = artworks
+    },
+    SET_HOME_PAGE: (state, { home_page }) => {
+      state.home_page = home_page
     },
   },
 })

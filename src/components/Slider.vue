@@ -1,46 +1,76 @@
 <template>
-    <div v-loading.body="loading" class="main-gallery-wrap">
-      <div class="big-slider">
-        <div class="item">
-          <div class="holder">
-            <div class="info">
-              <div class="date">Nov. 18, 2016 – Feb. 5, 2017</div>
-              <div class="author">by <span>ROBERT HEINECKEN</span>. Object Matter1</div>
-            </div>
-            <div class="page-bg" style="background-image: url('../src/assets/slidervue.jpg')"></div>
+    <!--<div v-loading.body="loading" class="main-gallery-wrap">-->
+      <!--<div class="big-slider">-->
+        <!--<div-->
+          <!--v-for="item in slider"-->
+          <!--class="item"-->
+        <!--&gt;-->
+          <!--<div class="holder">-->
+            <!--<div class="info">-->
+              <!--<div class="date">{{item.date}}</div>-->
+              <!--<div class="author">{{item.title}}</div>-->
+            <!--</div>-->
+            <!--<div-->
+              <!--v-bind:style="{ backgroundImage: 'url(' + item.img + ')' }"-->
+              <!--class="page-bg"-->
+            <!--&gt;-->
+            <!--</div>-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
+  <div class="big-slider">
+    <slick ref="slick" :options="slickOptions">
+      <div
+        v-for="item in slider"
+        class="item"
+      >
+        <div class="holder">
+          <div class="info">
+            <div class="date">{{item.date}}</div>
+            <div class="author">{{item.title}}</div>
           </div>
-        </div>
-        <div class="item">
-          <div class="holder">
-            <div class="info">
-              <div class="date">Nov. 18, 2016 – Feb. 5, 2017</div>
-              <div class="author">by <span>ROBERT HEINECKEN</span>. Object Matter1</div>
-            </div>
-            <div class="page-bg" style="background-image: url('./src/assets/slidervue1.jpg')"></div>
-          </div>
-        </div>
-        <div class="item">
-          <div class="holder">
-            <div class="info">
-              <div class="date">Nov. 18, 2016 – Feb. 5, 2017</div>
-              <div class="author">by <span>ROBERT HEINECKEN</span>. Object Matter1</div>
-            </div>
-            <div class="page-bg" style="background-image: url('./src/assets/slidervue2.jpg')"></div>
+          <div
+            v-bind:style="{ backgroundImage: 'url(' + item.img + ')' }"
+            class="page-bg"
+          >
           </div>
         </div>
       </div>
-    </div>
+    </slick>
+  </div>
 </template>
 
+
 <script>
+  import Slick from 'vue-slick'
+
   export default {
+    name: 'Slider',
+    props: ['slider'],
+    components: {
+      Slick
+    },
     data() {
       return {
-        loading: true
+        slickOptions: null
       }
     },
     mounted() {
-      setTimeout(() => {this.loading= false}, 1000)
+      setTimeout(function() {
+        this.slickOptions = {
+          slidesToShow: 4,
+          infinite: true,
+          accessibility: true,
+          adaptiveHeight: false,
+          arrows: false,
+          dots: true,
+          draggable: true,
+          edgeFriction: 0.30,
+          swipe: true
+        }
+      }, 3000)
     }
   }
 </script>
+

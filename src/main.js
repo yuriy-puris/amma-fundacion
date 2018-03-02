@@ -23,12 +23,14 @@ new Vue({
 
 
 //slider
-$('.big-slider').slick({
-  dots: true,
-  arrows: false,
-  infinite: true,
-  speed: 500,
-  fade: true,
-  cssEase: 'linear',
-  lazyLoad: 'progressive'
-})
+// $('.big-slider').slick({
+//   dots: true,
+//   arrows: false,
+//   infinite: true,
+//   speed: 500,
+//   fade: true,
+//   cssEase: 'linear',
+//   lazyLoad: 'progressive'
+// })
+
+
