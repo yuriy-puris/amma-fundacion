@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
+import $ from 'jquery';
 Vue.use(Vuex)
 const store = new Vuex.Store ({
   state: {
@@ -9,7 +10,8 @@ const store = new Vuex.Store ({
     pages: null,
     page_exhibitions: null,
     filter_settings: null,
-    artworks: null
+    artworks: null,
+    contact_page: null,
   },
   actions: {
     LOAD_MENU_LIST: function({commit}) {
@@ -86,7 +88,7 @@ const store = new Vuex.Store ({
       axios.get('http://amma-test.bigdropinc.net/wp-json/wp/v2/pages/394')
         .then((response) => {
           let home_page = {
-            home_collection: response.data.acf.home_collection_artworks,
+            home_collection:  response.data.acf.home_collection_artworks,
             home_slider_artworks: response.data.acf.home_slider_artworks,
             home_exhibitions: response.data.acf.home_exhibitions,
             home_artists: response.data.acf.home_artists
@@ -96,6 +98,14 @@ const store = new Vuex.Store ({
             console.log(e)
         })
     },
+    LOAD_CONTACT_PAGE: function ({commit}) {
+      axios.get('http://amma-test.bigdropinc.net/wp-json/wp/v2/pages/6')
+        .then((response) => {
+          commit('SET_CONTACT_PAGE', { contact_page: response.data })
+        }).catch(e => {
+          console.log(e)
+        })
+    }
   },
   mutations: {
     SET_MENU_LIST: (state, { menu_list }) => {
@@ -116,6 +126,22 @@ const store = new Vuex.Store ({
     SET_HOME_PAGE: (state, { home_page }) => {
       state.home_page = home_page
     },
+    SET_CONTACT_PAGE: (state, {contact_page}) => {
+      state.contact_page = contact_page
+    }
+  },
+  getters: {
+    getPage: (state) => (name) => {
+      if( state.pages !== null ) {
+        return state.pages.find(item => item.slug == name)
+      }
+    },
+    getExhibitions: (state) => () => {
+      return state.page_exhibitions
+    },
+    getSubMenuExhib: (state) => (name) => {
+      return state.menu_list.find(item => item.object == name)
+    }
   },
 })
 

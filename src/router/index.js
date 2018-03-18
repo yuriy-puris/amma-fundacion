@@ -22,12 +22,6 @@ const routes = [
     path: '/',
     component: Home
   },
-  // {
-  //   path: '/artists/:name',
-  //   name: 'name',
-  //   component: LetterPage,
-  //   props: true
-  // },
   {
     path: '/about-us/about-amma/',
     name: 'about-amma',
@@ -50,27 +44,30 @@ const routes = [
     path: '/exhibitions',
     name: 'exhibitions',
     component: Exhibitions,
+    props: true
+  },
+  {
+    path: '/exhibitions/:id',
+    name: 'exhibitions',
+    component: Exhibitions,
     props: true,
-    children: [
-      {
-        path: ':exhibitions',
-        name: 'exhibitions',
-        component: CurrentExhibitions,
-        props: true
-      },
-      {
-        path: ':upcoming-exhibitions',
-        name: 'upcoming-exhibitions',
-        component: UpcomingExhibitions,
-        props: true
-      },
-      {
-        path: ':past-exhibitions',
-        name: 'past-exhibitions',
-        component: PastExhibitions,
-        props: true
-      },
-    ]
+      children: [
+          {
+            path: '/exhibitions',
+            component: CurrentExhibitions,
+            props: true
+          },
+          {
+            path: '/upcoming-exhibitions',
+            component: UpcomingExhibitions,
+            props: true
+          },
+          {
+            path: '/past-exhibitions',
+            component: PastExhibitions,
+            props: true
+          },
+      ]
   },
   {
     path: '/artists',

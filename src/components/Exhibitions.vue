@@ -2,7 +2,7 @@
   <div class="container">
     <h1>Exhibitions</h1>
     <SubMenuExhibitions
-      v-bind:sub_menu="this.sub_menu"
+      v-bind:sub_menu="this.sub_menu.children"
     />
     <router-view></router-view>
   </div>
@@ -19,30 +19,26 @@
         required: true
       }
     },
+    data() {
+      return {
+        sub_menu: null
+      }
+    },
     components: {
       SubMenuExhibitions,
     },
-    data() {
-      return {
-        sub_menu: null,
-        page_item: null,
+    computed:{
+      'getContentPage': function() {
+        return this.$store.getters.getExhibitions()
       }
     },
-    computed: mapState([
-      'menu_list',
-      'page_exhibitions'
-    ]),
-    created() {
-      this.$store.state.menu_list.forEach((item) => {
-        if( item.object === this.name ) {
-          this.sub_menu = item.children
-        }
-      }),
-      this.$store.state.page_exhibitions.forEach((item) => {
-        if( item.slug === this.name ) {
-          this.page_item = item
-        }
-      })
+    methods: {
+      getSubMenu(name) {
+        this.sub_menu = this.$store.getters.getSubMenuExhib(this.name)
+      }
+    },
+    mounted() {
+      this.getSubMenu(name)
     }
   }
 </script>

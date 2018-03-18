@@ -41,13 +41,16 @@
         'home_page'
       ])
     },
+    created() {
+      this.loadHomePage()
+    },
+    mounted() {
+      this.loadHomePage()
+    },
     methods: {
       loadHomePage() {
         this.$store.dispatch('LOAD_HOME_PAGE')
       }
-    },
-    created() {
-      this.loadHomePage()
     },
   }
 </script>

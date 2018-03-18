@@ -15,6 +15,14 @@ h1 {
   line-height: 64px;
   margin-bottom: 38px;
 }
+a {
+  color: #434a54;
+  text-decoration: none;
+}
+img {
+  max-width: 100%;
+  vertical-align: top;
+}
 #app {
   display: flex;
   flex-direction: column;
@@ -521,14 +529,12 @@ h1 {
 .big-slider
 {
   position: relative;
-
-  margin: 0 -5px;
+  margin: 0 0 100px;
 }
 
 .big-slider .item
 {
   position: relative;
-
   width: 100%;
   min-height: 270px;
 }
@@ -645,10 +651,11 @@ section h2
   line-height: 36px;
 
   text-align: center;
-}/* main-gallery end *//* collection-gallery */.collection-gallery-wrap
-                                               {
-                                                 margin-bottom: 45px;
-                                               }
+}
+.collection-gallery-wrap
+{
+ margin-bottom: 45px;
+}
 
 .collection-gallery-wrap .collection-gallery
 {
@@ -668,8 +675,6 @@ section h2
   position: relative;
 
   overflow-x: auto;
-
-  margin-right: -20px;
 
   white-space: nowrap;
 }
@@ -1539,3 +1544,255 @@ input:checked + span {
   line-height: 16px;
   display: block;
 }
+.collection-gallery .item {
+  font-size: 18px;
+  line-height: 20px;
+  width: 140px;
+}
+.collection-gallery figure a {
+  height: 180px;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.link-more {
+  font: 12px/37px 'muliregular', sans-serif;
+  position: relative;
+  display: inline-block;
+  min-width: 160px;
+  min-height: 40px;
+  padding: 0 10px;
+  cursor: pointer;
+  -moz-user-select: none;
+  transition: border-color .3s;
+  text-align: center;
+  vertical-align: top;
+  text-transform: uppercase;
+  color: #1f2226;
+  border: 2px solid #e6e9ee;
+  background-color: transparent;
+  background-image: none;
+  -webkit-appearance: none;
+}
+.info-area {
+  margin-bottom: 40px;
+  padding-bottom: 30px;
+}
+.info-area figure {
+  position: relative;
+  height: 250px;
+  margin-bottom: 15px;
+  text-align: center;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: contain;
+}
+@media screen and (min-width: 1025px) {
+  .info-area figure {
+    float: right;
+    width: 54%;
+    height: 360px;
+    margin-left: 20px;
+  }
+  .info-area .description {
+    max-width: 620px;
+    padding: 20px 0;
+  }
+  .info-area .description {
+    padding-top: 30px;
+  }
+  .desk-6 {
+    width: 50%;
+    float: left;
+  }
+}
+.desk-6 {
+  padding-right: 10px;
+  padding-left: 10px;
+}
+.info-area .description {
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 15px;
+}
+address {
+  margin-bottom: 20px;
+}
+address span {
+  display: block;
+}
+dl.contacts-list {
+  margin-bottom: 20px;
+}
+dl.contacts-list dt {
+  float: left;
+  padding-right: 5px;
+  color: #aab2bd;
+}
+dl.contacts-list dd {
+  display: block;
+  overflow: hidden;
+}
+dl.contacts-list a {
+  color: #434a54;
+}
+.contacts-area .info {
+  max-width: 400px;
+  margin-bottom: 20px;
+}
+.contacts-form .form-group {
+  position: relative;
+}
+.contacts-form .form-control {
+  padding: 0 10px 0 15px;
+  color: #000;
+  border-color: #e6e9ee;
+}
+.form-control {
+  font: 14px/16px 'mulilight', sans-serif;
+  width: 100%;
+  height: 34px;
+  margin: 0;
+  padding: 0 0 5px;
+  transition: border-color .3s;
+  color: #fff;
+  border: none;
+  border-bottom: 1px solid #808080;
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+  -webkit-appearance: none;
+}
+.contacts-form textarea.form-control {
+  height: 156px;
+  padding-top: 10px;
+}
+.contacts-form .form-control {
+  padding: 0 10px 0 15px;
+  color: #000;
+  border-color: #e6e9ee;
+}
+.form-control {
+  font: 14px/16px 'mulilight', sans-serif;
+  width: 100%;
+  height: 34px;
+  margin: 0;
+  padding: 0 0 5px;
+  transition: border-color .3s;
+  color: #fff;
+  border: none;
+  border-bottom: 1px solid #808080;
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+  -webkit-appearance: none;
+}
+textarea.form-control {
+  border: 1px solid #808080;
+}
+.contacts-form .form-control {
+  padding: 0 10px 0 15px;
+  color: #000;
+  border-color: #e6e9ee;
+}
+.contacts-form .form-footer {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+.contacts-form .note {
+  font-family: 'mulilight', sans-serif;
+  font-size: 12px;
+  display: block;
+  margin-bottom: 10px;
+  color: #aab2bd;
+}
+.lap-1,
+.lap-2,
+.lap-3,
+.lap-4,
+.lap-5,
+.lap-6,
+.lap-7,
+.lap-8,
+.lap-9,
+.lap-10,
+.lap-11,
+.lap-12 {
+  float: left;
+}
+.row {
+  margin-right: -10px;
+  margin-left: -10px;
+}
+.row::after,
+.contacts-area::after {
+  clear: both;
+  display: table;
+  content: ' ';
+}
+@media (min-width: 768px) {
+  .lap-6 {
+    width: 50%;
+  }
+}
+.form-group {
+  position: relative;
+  overflow: hidden;
+  margin: 0 0 19px;
+}
+.btn {
+  font: 12px/37px 'muliregular', sans-serif;
+  position: relative;
+  display: inline-block;
+  min-width: 160px;
+  min-height: 40px;
+  padding: 0 10px;
+  cursor: pointer;
+  -moz-user-select: none;
+  transition: border-color .3s;
+  text-align: center;
+  vertical-align: top;
+  text-transform: uppercase;
+  color: #1f2226;
+  border: 2px solid #e6e9ee;
+  background-color: transparent;
+  background-image: none;
+  -webkit-appearance: none;
+}
+.contacts-form .btn:hover {
+  border-color: #d870ad;
+}
+input,
+textarea {
+  outline: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

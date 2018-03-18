@@ -4,8 +4,8 @@
     <div class="info-area">
       <figure style="background-image: url('../src/assets/collection.jpg')"></figure>
       <div class="description">
-        <h2 class="title">{{page_item.title.rendered}}</h2>
-        <p>{{page_item.content.rendered}}</p>
+        <h2 class="title">{{getContentPage.title.rendered}}</h2>
+        <p>{{getContentPage.content.rendered}}</p>
       </div>
     </div>
   </div>
@@ -13,7 +13,6 @@
 
 <script>
   import { mapState } from 'vuex'
-  import Artists from '../components/Artists'
 
   export default {
     name: 'Collection',
@@ -23,23 +22,10 @@
         required: true
       }
     },
-    data() {
-      return {
-        page_item: null,
+    computed: {
+      'getContentPage': function(name) {
+        return this.$store.getters.getPage(this.name)
       }
-    },
-    components: {
-      Artists
-    },
-    computed: mapState([
-      'pages'
-    ]),
-    created() {
-      this.$store.state.pages.forEach((item, index) => {
-        if( item.slug === this.name ) {
-          this.page_item = item
-        }
-      })
     }
   }
 </script>

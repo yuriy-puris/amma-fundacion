@@ -24,6 +24,7 @@ export default {
     this.$store.dispatch('LOAD_EXHIBITIONS')
     this.$store.dispatch('LOAD_FILTER_SETTINGS')
     this.$store.dispatch('LOAD_ARTWORKS')
+    this.$store.dispatch('LOAD_CONTACT_PAGE')
   }
 }
 </script>
@@ -50,9 +51,5 @@ ul {
 li {
   display: inline-block;
   margin: 0 10px;
-}
-
-a {
-  color: #42b983;
 }
 </style>

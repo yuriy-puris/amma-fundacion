@@ -1,4 +1,3 @@
-import $ from 'jquery';
 import Vue from 'vue'
 import Vuex from 'vuex'
 import App from './App.vue'
@@ -7,10 +6,9 @@ import './css/app.css'
 import router from './router'
 import 'query-string'
 import 'slick-carousel'
-import './sliderVue'
-
-
-
+import '../node_modules/slick-carousel/slick/slick.css';
+import ElementUI from 'element-ui';
+Vue.use(ElementUI);
 Vue.use(Vuex)
 
 new Vue({
@@ -22,15 +20,6 @@ new Vue({
 })
 
 
-//slider
-// $('.big-slider').slick({
-//   dots: true,
-//   arrows: false,
-//   infinite: true,
-//   speed: 500,
-//   fade: true,
-//   cssEase: 'linear',
-//   lazyLoad: 'progressive'
-// })
+
 
 

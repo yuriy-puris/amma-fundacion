@@ -2,10 +2,7 @@
   <nav class="nav-exhibitions">
     <router-link
       v-for="(item, index) in sub_menu"
-      :to="{
-          name: `${ item.object_slug === null ? item.object : item.object_slug  }`,
-          params: { name: `${ item.object_slug === null ? item.object : item.object_slug }` }
-        }" >
+      :to=" `${ item.object_slug === null ? item.object : item.object_slug  }` " >
       {{ item.title }}
     </router-link>
   </nav>

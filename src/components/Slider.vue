@@ -1,26 +1,6 @@
 <template>
-    <!--<div v-loading.body="loading" class="main-gallery-wrap">-->
-      <!--<div class="big-slider">-->
-        <!--<div-->
-          <!--v-for="item in slider"-->
-          <!--class="item"-->
-        <!--&gt;-->
-          <!--<div class="holder">-->
-            <!--<div class="info">-->
-              <!--<div class="date">{{item.date}}</div>-->
-              <!--<div class="author">{{item.title}}</div>-->
-            <!--</div>-->
-            <!--<div-->
-              <!--v-bind:style="{ backgroundImage: 'url(' + item.img + ')' }"-->
-              <!--class="page-bg"-->
-            <!--&gt;-->
-            <!--</div>-->
-          <!--</div>-->
-        <!--</div>-->
-      <!--</div>-->
-    <!--</div>-->
-  <div class="big-slider">
-    <slick ref="slick" :options="slickOptions">
+  <div v-loading.body="loading">
+    <div class="big-slider">
       <div
         v-for="item in slider"
         class="item"
@@ -37,12 +17,13 @@
           </div>
         </div>
       </div>
-    </slick>
+    </div>
   </div>
 </template>
 
 
 <script>
+  import $ from 'jquery';
   import Slick from 'vue-slick'
 
   export default {
@@ -53,23 +34,26 @@
     },
     data() {
       return {
-        slickOptions: null
+        loading: true
       }
     },
-    mounted() {
-      setTimeout(function() {
-        this.slickOptions = {
-          slidesToShow: 4,
-          infinite: true,
-          accessibility: true,
-          adaptiveHeight: false,
-          arrows: false,
+    created() {
+      setTimeout(() => {
+        this.initSlick()
+        this.loading= false
+    }, 1000)
+    },
+    methods: {
+      initSlick() {
+        $('.big-slider').slick({
           dots: true,
-          draggable: true,
-          edgeFriction: 0.30,
-          swipe: true
-        }
-      }, 3000)
+          infinite: true,
+          speed: 500,
+          fade: true,
+          cssEase: 'linear',
+          arrows: false
+        });
+      }
     }
   }
 </script>
