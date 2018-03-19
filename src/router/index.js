@@ -44,31 +44,43 @@ const routes = [
     path: '/exhibitions',
     name: 'exhibitions',
     component: Exhibitions,
-    props: true
-  },
-  {
-    path: '/exhibitions/:id',
-    name: 'exhibitions',
-    component: Exhibitions,
     props: true,
       children: [
-          {
-            path: '/exhibitions',
-            component: CurrentExhibitions,
-            props: true
-          },
-          {
-            path: '/upcoming-exhibitions',
-            component: UpcomingExhibitions,
-            props: true
-          },
-          {
-            path: '/past-exhibitions',
-            component: PastExhibitions,
-            props: true
-          },
+        {
+          path: 'exhibitions',
+          name: 'CurrentExhibitions',
+          component: CurrentExhibitions,
+        },
+        {
+          path: 'upcoming-exhibitions',
+          name: 'UpcomingExhibitions',
+          component: UpcomingExhibitions,
+        },
+        {
+          path: 'past-exhibitions',
+          name: 'PastExhibitions',
+          component: PastExhibitions,
+        }
       ]
   },
+  // {
+  //   path: '/exhibitions/exhibitions',
+  //   name: 'CurrentExhibitions',
+  //   component: CurrentExhibitions,
+  //   props: true,
+  // },
+  // {
+  //   path: '/exhibitions/upcoming-exhibitions',
+  //   name: 'UpcomingExhibitions',
+  //   component: UpcomingExhibitions,
+  //   props: true,
+  // },
+  // {
+  //   path: '/exhibitions/past-exhibitions',
+  //   name: 'PastExhibitions',
+  //   component: PastExhibitions,
+  //   props: true,
+  // },
   {
     path: '/artists',
     name:'artists',

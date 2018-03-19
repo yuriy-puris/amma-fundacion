@@ -18,10 +18,8 @@
               <ul v-if="item.children">
                 <li v-for="(itm, idx) in item.children">
                   <router-link
-                    :to="{
-                      name: `${ itm.object_slug === null ? itm.object : itm.object_slug  }`,
-                      params: { name: `${ itm.object_slug === null ? itm.object : itm.object_slug }` }
-                    }">
+                    :to="`${ itm.object_slug === null ? itm.object : itm.object_slug  }`"
+                  >
                     {{ itm.title }}
                   </router-link>
                 </li>

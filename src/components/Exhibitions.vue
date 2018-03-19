@@ -2,7 +2,8 @@
   <div class="container">
     <h1>Exhibitions</h1>
     <SubMenuExhibitions
-      v-bind:sub_menu="this.sub_menu.children"
+      v-bind:sub_menu="this.sub_menu"
+      v-bind:current_url="this.current_url"
     />
     <router-view></router-view>
   </div>
@@ -21,13 +22,14 @@
     },
     data() {
       return {
-        sub_menu: null
+        sub_menu: null,
+        current_url: null
       }
     },
     components: {
       SubMenuExhibitions,
     },
-    computed:{
+    computed: {
       'getContentPage': function() {
         return this.$store.getters.getExhibitions()
       }
@@ -39,6 +41,9 @@
     },
     mounted() {
       this.getSubMenu(name)
+    },
+    created() {
+      this.current_url = this.$route.path
     }
   }
 </script>

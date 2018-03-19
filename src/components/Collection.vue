@@ -5,7 +5,7 @@
       <figure style="background-image: url('../src/assets/collection.jpg')"></figure>
       <div class="description">
         <h2 class="title">{{getContentPage.title.rendered}}</h2>
-        <p>{{getContentPage.content.rendered}}</p>
+        <p v-html="getContentPage.content.rendered"></p>
       </div>
     </div>
   </div>

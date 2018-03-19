@@ -11,7 +11,7 @@
             {{ item.title.rendered }}
           </a>
         </h3>
-        <p>{{ item.excerpt.rendered }}</p>
+        <p v-html="item.excerpt.rendered"></p>
       </div>
     </div>
     <div class="pagination-template">
